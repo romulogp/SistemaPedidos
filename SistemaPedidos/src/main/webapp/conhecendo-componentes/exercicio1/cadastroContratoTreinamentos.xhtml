@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Cadastrar Contrato de Treinamento</title>
+</h:head>
+<h:body>
+	
+	<h1>Cadastro de Contrato de Treinamentos</h1>
+	
+	<p:separator />
+	
+	<div class="ui-fluid">
+		<h:form prependId="false">
+			<p:messages />
+			<p:focus id="focus" context="contratoPanel" />
+			<p:panelGrid id="contratoPanel" columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="rgp-form-panel ui-panelgrid-blank">
+				<p:outputLabel value="Razão Social" for="razaoSocial" />
+				<p:inputText id="razaoSocial" value="#{contratoTreinamentoBean.razaoSocial}" required="true" />
+				
+				<p:outputLabel for="cnpj" value="CNPJ" />
+				<p:inputMask id="cnpj" value="#{contratoTreinamentoBean.cnpj}" 
+					mask="99.999.999/9999-99" placeholder="__.___.___/____-__" required="true"  />
+				
+				<p:commandButton value="Cadastrar" icon="fa fa-save"
+					action="#{contratoTreinamentoBean.salvar}" update="@form"  />
+			</p:panelGrid>
+		</h:form>
+	</div>
+</h:body>
+</html>

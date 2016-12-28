@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Utilizando Calendar</title>
+	<h:outputScript library="javascript" name="locale_pt_BR.js" />
+</h:head>
+<h:body>
+	<h:form id="form" prependId="false">
+		<p:messages autoUpdate="true" />
+		
+		<p:panelGrid columns="2">
+			<p:outputLabel for="nome" value="Nome:" />
+			<p:inputText id="nome" value="#{perfilUsuarioBean.nome}" 
+					required="true" />
+			
+			<p:outputLabel value="Data de Nascimento" for="dataNascimento" />
+			<p:calendar id="dataNascimento" required="true" value="#{perfilUsuarioBean.dataNascimento}" 
+					pattern="dd/MM/yyyy" readonlyInput="true" navigator="false" 
+					pages="1" maxdate="#{perfilUsuarioBean.dataHoje}" mode="popup"
+					locale="pt_BR" />
+			
+			<p:commandButton value="Atualizar" action="#{perfilUsuarioBean.atualizar}" update="@form" />
+		</p:panelGrid>
+ 		
+	</h:form>
+</h:body>
+
+</html>

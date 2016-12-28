@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Utilizando Autocomplete com Suporte a POJO</title>
+	</h:head>
+
+	<h:body>
+		<h:form prependId="false">
+			<p:messages />
+			
+			<p:focus context="panel" />
+			<p:panelGrid id="panel" columns="2">
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" value="#{paisBean.nome}" />
+				
+				<p:outputLabel value="País" for="pais" />
+				<p:autoComplete id="pais" value="#{paisBean.pais}"
+					completeMethod="#{paisBean.sugerirPaises}"
+					forceSelection="true" converter="paisCO"
+					var="p" itemLabel="#{p.nome}" itemValue="#{p}" />
+			</p:panelGrid>
+			
+			<p:commandButton value="Atualizar" action="#{paisBean.atualizar}" update="@form" />
+			
+		</h:form>	
+	</h:body>
+
+</html>

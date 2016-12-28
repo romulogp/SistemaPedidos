@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Utilizando SelectOneRadio</title>
+		<style>
+			.sem-bordas td {
+				border: none;
+				padding: 5px;
+			}
+			.cel-radio td {
+				text-align: center;
+			}
+		</style>
+	</h:head>
+
+	<h:body>
+		<h:form prependId="false">
+			<p:messages />
+			
+			<p:focus context="panel" />
+			<p:panelGrid id="panel" columns="2">
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" value="#{pessoaMB.nome}" required="true" />
+
+				<p:outputLabel value="Sexo" for="sexo" />
+				<p:selectOneRadio id="sexo" value="#{pessoaMB.sexo}" required="true"
+						styleClass="sem-bordas">
+					<f:selectItem itemLabel="Masculino" itemValue="M" />
+					<f:selectItem itemLabel="Feminino"  itemValue="F" />
+				</p:selectOneRadio>
+				
+				<p:outputLabel value="Estado Civil" for="estadoCivil" />
+				<h:panelGroup>
+					<p:selectOneRadio id="estadoCivil" value="#{pessoaMB.estadoCivil}" required="true" layout="custom">
+						<f:selectItem itemValue="solteiro" />
+						<f:selectItem itemValue="casado" />
+						<f:selectItem itemValue="diverciado" />
+					</p:selectOneRadio>
+					<h:panelGrid columns="3" styleClass="sem-bordas" rowClasses="cel-radio">
+						<p:radioButton id="opt1" for="estadoCivil" itemIndex="0"/>
+						<p:radioButton id="opt2" for="estadoCivil" itemIndex="1"/>
+						<p:radioButton id="opt3" for="estadoCivil" itemIndex="2"/>
+						
+						<p:outputLabel value="Solteiro" for="opt1" />
+						<p:outputLabel value="Casado" for="opt2" />
+						<p:outputLabel value="Divorciado" for="opt3" />
+					</h:panelGrid>
+				</h:panelGroup>
+			</p:panelGrid>
+			
+			<p:commandButton value="Atualizar" action="#{pessoaMB.atualizar}" update="@form" />
+			
+		</h:form>	
+	</h:body>
+
+</html>

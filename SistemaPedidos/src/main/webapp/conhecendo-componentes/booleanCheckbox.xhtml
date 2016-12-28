@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Utilizando BooleanCheckBox</title>
+	</h:head>
+
+	<h:body>
+		<h:form prependId="false">
+			<p:messages />
+			
+			<p:focus context="panel" />
+			<p:panelGrid id="panel" columns="2">
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" value="#{pessoaBean.nome}" />
+				
+				<h:panelGroup />
+				<h:panelGroup>
+					<p:selectBooleanCheckbox id="aceito" value="#{termosContratoBean.aceito}" />
+					<p:outputLabel value="Aceitos os termos de serviço"
+						style="margin-left: 5px" />
+				</h:panelGroup>
+			</p:panelGrid>
+			
+			<p:commandButton value="Atualizar" action="#{termosContratoBean.atualizar}" update="@form" />
+			
+		</h:form>	
+	</h:body>
+
+</html>

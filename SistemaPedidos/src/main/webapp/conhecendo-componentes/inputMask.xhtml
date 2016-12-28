@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Utilizando InputMask</title>
+	</h:head>
+
+	<h:body>
+		<h:form prependId="false">
+			<p:messages />
+			
+			<p:focus context="panel" />
+			<p:panelGrid id="panel" columns="2">
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" value="#{pessoaBean.nome}" />
+				
+				<p:outputLabel value="Telefone" for="telefone" />
+				<p:inputMask id="telefone" value="#{pessoaBean.telefone}"
+					mask="(99) 9999-9999" />
+				
+				<p:outputLabel value="Telefone Comercial:" for="foneComercial" />
+				<p:inputMask id="foneComercial" value="#{pessoaBean.telefoneComercial}" 
+					mask="(99) 9999-9999? x9999" />
+				
+				<p:outputLabel value="Matrícula" for="matricula" />
+				<p:inputMask id="matricula" value="#{pessoaBean.matricula}" 
+					mask="aaa*-9999" placeholder="Matrícula"/>
+			</p:panelGrid>
+			
+			<p:commandButton value="Atualizar" action="#{pessoaBean.atualizar}" update="@form" />
+			
+		</h:form>	
+	</h:body>
+
+</html>
